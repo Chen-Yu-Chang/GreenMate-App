@@ -1,5 +1,5 @@
 package com.example.ecosavertest;
-
+//gps
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -10,10 +10,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import java.lang.Math;
 
-public class GPSLocation extends Service implements LocationListener {
+public class GPSLocation extends Service implements LocationListener {//get the location
         private final Context inContext;
-        private double latitude;
-        private double longitude;
+        private double latitude;//using latitude
+        private double longitude;//and longitude
         private Location Loc;
         public GPSLocation(Context mContext) {
             this.inContext = mContext;
@@ -26,6 +26,7 @@ public class GPSLocation extends Service implements LocationListener {
             return this.longitude;
         }
         public double GpsDistanceTo(GPSLocation loc2){
+            //calculate the distance by the formula from longitude and latitude
             double deltaLong = loc2.longitude - this.longitude;
             double deltaLat = loc2.latitude - this.latitude;
             double a;

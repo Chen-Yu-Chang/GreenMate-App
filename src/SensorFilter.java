@@ -1,5 +1,5 @@
 package com.example.a327_prototype_1;
-
+//a class with an algorithm to filter out the values that has an approximation of steps
 public class SensorFilter {
     private SensorFilter() {
     }
