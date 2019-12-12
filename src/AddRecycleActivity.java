@@ -27,11 +27,11 @@ public class AddRecycleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recycle);
-        scoreCounter = findViewById(R.id.textView_No_1);
-        addPaper = findViewById(R.id.button_paper);
-        addMetal = findViewById(R.id.button_metal);
-        addGlass = findViewById(R.id.button_glass);
-        editTextPaper = findViewById(R.id.editText_paper);
+        scoreCounter = findViewById(R.id.textView_No_1);//show score
+        addPaper = findViewById(R.id.button_paper);//paper button
+        addMetal = findViewById(R.id.button_metal);//metal button
+        addGlass = findViewById(R.id.button_glass);//glass button
+        editTextPaper = findViewById(R.id.editText_paper);//ask for input from the user
         editTextMetal = findViewById(R.id.editText_metal);
         editTextGlass = findViewById(R.id.editText_glass);
         zero = findViewById(R.id.button_zero);
@@ -51,7 +51,7 @@ public class AddRecycleActivity extends AppCompatActivity {
 
         addPaper.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {//if paper is recycled, add 10 points each to the score
                 String number = editTextPaper.getText().toString();
                 if(number.isEmpty()) {
                     editTextPaper.setError("Enter a number!");
@@ -72,7 +72,7 @@ public class AddRecycleActivity extends AppCompatActivity {
 
         addMetal.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {//if metal is recycled, add 20 points each to the score
                 String number = editTextMetal.getText().toString();
                 if(number.isEmpty()) {
                     editTextMetal.setError("Enter a number!");
@@ -98,7 +98,7 @@ public class AddRecycleActivity extends AppCompatActivity {
 
 
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {//if glass is recycled, add 20 points each to the score
                 String number = editTextGlass.getText().toString();
                 if(number.isEmpty()) {
                     editTextGlass.setError("Enter a number!");
@@ -119,7 +119,7 @@ public class AddRecycleActivity extends AppCompatActivity {
             }
         });
 
-        zero.setOnClickListener(new View.OnClickListener() {
+        zero.setOnClickListener(new View.OnClickListener() {//if no recycle, the points are not added
             @Override
             public void onClick(View v) {
                 score = 0;
