@@ -31,14 +31,15 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_home);
         // Get an instance of the SensorManager
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);//use accelerometer in the phone
         simpleStepDetector = new StepDetector();
         simpleStepDetector.registerListener(this);
-        TvSteps = findViewById(R.id.textView_steps);
-        BtnStart = findViewById(R.id.button_start);
-        BtnStop = findViewById(R.id.button_stop);
+        TvSteps = findViewById(R.id.textView_steps);//seeing how many steps the user walked
+        BtnStart = findViewById(R.id.button_start);//start counting function
+        BtnStop = findViewById(R.id.button_stop);//stop counting function
 
         BtnStart.setOnClickListener(new View.OnClickListener() {
+            //to start calculating and call all teh sensor and features
             @Override
             public void onClick(View arg0) {
                 numSteps = 0;
@@ -46,6 +47,7 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
             }
         });
         BtnStop.setOnClickListener(new View.OnClickListener() {
+            //stop the counting
             @Override
             public void onClick(View arg0) {
                 sensorManager.unregisterListener(HomeActivity.this);
@@ -58,17 +60,17 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
-                    case R.id.bear:
+                    case R.id.bear://the bottom selection of bear to the bear activity
                         startActivity(new Intent(getApplicationContext(),BearActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.home:
+                    case R.id.home://the bottom selection of home, which stays in the same page
                         return true;
-                    case R.id.setting:
+                    case R.id.setting://the bottom selection of setting to the setting activity
                         startActivity(new Intent(getApplicationContext(),SettingActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.recycle:
+                    case R.id.recycle://the bottom selection of recycling to the recycle activity
                         startActivity(new Intent(getApplicationContext(),RecycleActivity.class));
                         overridePendingTransition(0,0);
                         return true;
@@ -88,7 +90,7 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
     }
 
     @Override
-    public void onSensorChanged(SensorEvent event) {
+    public void onSensorChanged(SensorEvent event) {//changing the sensor
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             simpleStepDetector.updateAccel(
                     event.timestamp, event.values[0], event.values[1], event.values[2]);

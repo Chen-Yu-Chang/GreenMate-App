@@ -34,6 +34,7 @@ import static com.google.android.gms.location.LocationServices.getFusedLocationP
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+    //the map page recording the user's routine
     LocationRequest mLocationRequest;
 
     private long UPDATE_INTERVAL = 10 * 1000;
@@ -63,7 +64,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * installed Google Play services and returned to the app.
      */
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(GoogleMap googleMap) {//get the location in Google Map
        mMap = googleMap;
         if (checkPermissions()) {
             mMap.setMyLocationEnabled(true);
@@ -73,7 +74,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         getLastLocation();
     }
 
-    private boolean checkPermissions() {
+    private boolean checkPermissions() {//check if there is permission for location
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             return true;
         } else {
@@ -82,11 +83,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    private void requestpermissions() {
+    private void requestpermissions() {//request the user for permission of getting his or her location
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_FINE_LOCATION);
     }
 
-    protected void startLocationUpdates() {
+    protected void startLocationUpdates() {//start to get the location and update
         mLocationRequest = new LocationRequest();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         mLocationRequest.setInterval(UPDATE_INTERVAL);

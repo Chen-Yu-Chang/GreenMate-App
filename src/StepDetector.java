@@ -5,23 +5,24 @@ public class StepDetector {
     private static final int VEL_RING_SIZE = 10;
     // change this threshold according to your sensitivity preferences
     private static final float STEP_THRESHOLD = 50f;
-
+    //use the accelerometer in the phone as sensor
     private static final int STEP_DELAY_NS = 250000000;
     private int accelRingCounter = 0;
-    private float[] accelRingX = new float[ACCEL_RING_SIZE];
-    private float[] accelRingY = new float[ACCEL_RING_SIZE];
-    private float[] accelRingZ = new float[ACCEL_RING_SIZE];
+    private float[] accelRingX = new float[ACCEL_RING_SIZE];//orientation X
+    private float[] accelRingY = new float[ACCEL_RING_SIZE];//Orientation Y
+    private float[] accelRingZ = new float[ACCEL_RING_SIZE];//Orientation Z
     private int velRingCounter = 0;
     private float[] velRing = new float[VEL_RING_SIZE];
     private long lastStepTimeNs = 0;
     private float oldVelocityEstimate = 0;
-    private StepListener listener;
+    private StepListener listener;//access to step listener
 
-    public void registerListener(StepListener listener) {
+    public void registerListener(StepListener listener) {//call to the step listener class for listening the alert
         this.listener = listener;
     }
 
     public void updateAccel(long timeNs, float x, float y, float z) {
+        //getting the most recent acceleration and estimate for the velocity
         float[] currentAccel = new float[3];
         currentAccel[0] = x;
         currentAccel[1] = y;
