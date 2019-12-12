@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+//add recycle activity
 public class AddRecycleActivity extends AppCompatActivity {
     TextView scoreCounter;
     Button addPaper, addMetal, addGlass, zero;

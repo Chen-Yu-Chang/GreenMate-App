@@ -14,7 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
+//login activity
 public class LoginActivity extends AppCompatActivity {
     EditText emailAddress, password;
     Button button_SignIn;
@@ -26,19 +26,19 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         myFireBaseAuth = FirebaseAuth.getInstance();
-        emailAddress = findViewById(R.id.editText_email);
-        password = findViewById(R.id.editText_password);
-        button_SignIn = findViewById(R.id.button_signIn);
-        textView_signUp = findViewById(R.id.textView_signUp);
+        emailAddress = findViewById(R.id.editText_email);//input email
+        password = findViewById(R.id.editText_password);//input password
+        button_SignIn = findViewById(R.id.button_signIn);//sign in button
+        textView_signUp = findViewById(R.id.textView_signUp);//sign up text
         myAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser myFireBaseUser = myFireBaseAuth.getCurrentUser();
-                if(myFireBaseUser != null){
+                if(myFireBaseUser != null){//sucessfully logged in
                     Toast.makeText(LoginActivity.this,"You're logged in", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(i);
-                }else{
+                }else{//not logged in
                     Toast.makeText(LoginActivity.this,"Please login", Toast.LENGTH_SHORT).show();
                 }
 
@@ -46,25 +46,25 @@ public class LoginActivity extends AppCompatActivity {
         };
         button_SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {//click to input
                 String email = emailAddress.getText().toString();
                 String myPassword = password.getText().toString();
-                if(email.isEmpty()) {
+                if(email.isEmpty()) {//if email empty, return error
                     emailAddress.setError("Please enter your email");
                     emailAddress.requestFocus();
-                }else if(myPassword.isEmpty()){
+                }else if(myPassword.isEmpty()){//if password empty, return error
                     password.setError("Please create your password");
                     password.requestFocus();
-                }else if(email.isEmpty() && myPassword.isEmpty()) {
+                }else if(email.isEmpty() && myPassword.isEmpty()) {//if both empty, return error
                     Toast.makeText(LoginActivity.this,"Fields are empty!", Toast.LENGTH_SHORT).show();
-                }else if(!(email.isEmpty() && myPassword.isEmpty())){
+                }else if(!(email.isEmpty() && myPassword.isEmpty())){//all input
                     myFireBaseAuth.signInWithEmailAndPassword(email, myPassword).addOnCompleteListener(LoginActivity.this,
                             new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if(!task.isSuccessful()){
+                                    if(!task.isSuccessful()){//but wrong, fail logging in
                                         Toast.makeText(LoginActivity.this,"Login Error, Try Again", Toast.LENGTH_SHORT).show();
-                                    }else{
+                                    }else{//successfully logged in and start activity
                                         Intent intentMain = new Intent(LoginActivity.this, HomeActivity.class);
                                         startActivity(intentMain);
                                     }
@@ -77,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         textView_signUp.setOnClickListener(new View.OnClickListener() {
+            //click on sign up to jump to register activity
             @Override
             public void onClick(View v) {
                 Intent intentSignUp = new Intent(LoginActivity.this,RegisterActivity.class);

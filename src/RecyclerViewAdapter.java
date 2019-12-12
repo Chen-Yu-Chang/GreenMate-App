@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
-
+//recycle view adapter id for user to know what categories of recycle there are
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
     private static final String TAG = "RecyclerViewAdapter";
     private ArrayList<String> myImageNames = new ArrayList<>();
@@ -29,9 +29,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.myImages = myImages;
         this.myContext = myContext;
 
-    }
+    }//each kind of recycle's format of listing
 
-
+    //acting with the database activity to show the categories and the pictures
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list_item, parent, false);
@@ -39,6 +39,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return holder;
     }
     @Override
+    //format of images
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
         Glide.with(myContext)
@@ -59,7 +60,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public int getItemCount() {
         return myImageNames.size();
     }
-
+    //putting all in order
     public class ViewHolder extends RecyclerView.ViewHolder {
         CircularImageView image;
         TextView name;
