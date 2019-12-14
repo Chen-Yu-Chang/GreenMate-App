@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RecycleActivity">
+    <ImageView
+        android:id="@+id/imageView_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:src="#3200E5FF"
+        android:layout_centerInParent="true"/>
+    <ImageView
+        android:id="@+id/imageView_bear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bear_in_bin"
+        android:layout_below="@id/textView_home"
+        android:layout_marginTop="-100dp"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/textView_home"
+        android:text="Recycle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffffff"
+        android:textSize="45dp"
+        android:fontFamily="@font/gotham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/button_database"
+        android:text="Recycling Database"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_marginBottom="70dp" />
+    <Button
+        android:id="@+id/button_addPoints"
+        android:text="Start"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_marginBottom="20dp"/>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="?android:attr/windowBackground"
+        android:layout_alignParentBottom="true"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/menu_navigation"/>
+
+</RelativeLayout>
