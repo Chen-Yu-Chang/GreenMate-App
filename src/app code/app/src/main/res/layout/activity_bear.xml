@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BearActivity">
+    <ImageView
+        android:id="@+id/imageView_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:src="#3200E5FF"
+        android:layout_centerInParent="true"/>
+
+    <ImageView
+        android:id="@+id/imageView_bear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bear_happy"
+        android:layout_centerInParent="true"/>
+    <Button
+        android:id="@+id/button_home_step"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/bear_paw_white"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/textView_home_step"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/button_home_step"
+        android:text="100"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/textView_home_recycle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/button_home_recycle"
+        android:layout_below="@+id/textView_home_step"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="15dp"/>
+
+    <Button
+        android:id="@+id/button_home_recycle"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/recycle_home_icon_white"
+        android:layout_below="@id/button_home_step"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"/>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="?android:attr/windowBackground"
+        android:layout_alignParentBottom="true"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/menu_navigation"/>
+
+</RelativeLayout>
